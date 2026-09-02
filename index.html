@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">KRONOS — Distribución Mayorista de iPhones</title>
+  <meta name="description" id="page-desc" content="Abastecimiento mayorista directo de iPhones para comerciantes y revendedores. Stock continuo, precios de origen y calidad garantizada.">
+  
+  <!-- OpenGraph & Social Media SEO Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="KRONOS — Distribución Mayorista de iPhones">
+  <meta property="og:description" content="Abastecimiento mayorista directo de iPhones para comerciantes y revendedores. Stock continuo, precios de origen y calidad garantizada.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1200&q=85">
+  <meta name="theme-color" content="#000000">
+
+  <!-- Estilos base para Lenis -->
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #000000;
+      --bg-light: #F6F6F4;
+      --bg-subtle: #ECECE9;
+      --text-dark: #000000;
+      --text-muted: #555555;
+      --border-light: #E5E5E2;
+      --blue-accent: #1D4ED8;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      font-variant-numeric: normal !important;
+      font-feature-settings: "zero" 0, "cv01" 0 !important;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Hero Atmosphere (Prolibu Royal Blue) */
+    .prolibu-hero {
+      position: relative;
+      background-color: #000000;
+      background-image: 
+        radial-gradient(ellipse 75% 65% at 50% 35%, #1D4ED8 0%, #0D2678 45%, #06102D 75%, #000000 100%);
+      overflow: hidden;
+    }
+
+    /* Navbar Pill Container */
+    .navbar-container {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      max-width: 1360px;
+      margin: 0 auto;
+      height: 64px;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.90);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 9999px;
+      box-shadow: 0 12px 36px -4px rgba(0, 0, 0, 0.6);
+      transition: color 0.3s ease, border-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+    }
+
+    /* Navbar Light Theme Variations (Blanco Puro con Texto Oscuro) */
+    .navbar-container.nav-theme-light .nav-logo {
+      color: #0F172A !important;
+    }
+    .navbar-container.nav-theme-light .nav-link-item {
+      color: #334155 !important;
+    }
+    .navbar-container.nav-theme-light .nav-link-item:hover {
+      color: #0F172A !important;
+    }
+    .navbar-container.nav-theme-light .nav-link-item svg {
+      color: #64748B !important;
+    }
+    .navbar-container.nav-theme-light .nav-lang-pill {
+      background: rgba(0, 0, 0, 0.06) !important;
+      border-color: rgba(0, 0, 0, 0.12) !important;
+    }
+    .navbar-container.nav-theme-light .nav-lang-btn.active-lang {
+      background: #0F172A !important;
+      color: #FFFFFF !important;
+    }
+    .navbar-container.nav-theme-light .nav-lang-btn:not(.active-lang) {
+      color: #64748B !important;
+    }
+    .navbar-container.nav-theme-light .nav-cta-btn {
+      background: #0F172A !important;
+      color: #FFFFFF !important;
+    }
+    .navbar-container.nav-theme-light .nav-cta-btn:hover {
+      background: #1E293B !important;
+    }
+    .navbar-container.nav-theme-light .nav-mobile-btn {
+      color: #0F172A !important;
+    }
+
+    /* Dropdown Menus (Pure White Clean Background) */
+    .nav-dropdown-wrapper {
+      position: relative;
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      min-width: 300px;
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 14px;
+      padding: 10px;
+      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    .nav-dropdown-wrapper:hover .nav-dropdown-menu,
+    .nav-dropdown-wrapper:focus-within .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: auto;
+    }
+
+    .dropdown-item {
+      display: block;
+      padding: 10px 14px;
+      border-radius: 10px;
+      transition: background 0.15s ease;
+    }
+
+    .dropdown-item:hover {
+      background: #F8FAFC;
+    }
+
+    /* Subtle hairline border containers */
+    /* Subtle hairline border containers with 3D perspective */
+    .clean-box {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: 32px;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    .clean-box:hover {
+      border-color: #94A3B8;
+      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.07);
+    }
+
+    /* Clean solid typography without artificial text color switching */
+    .heading-solid {
+      color: var(--text-dark);
+    }
+
+    /* Minimalist Mouse Scroll Indicator */
+    .mouse-scroll {
+      width: 22px;
+      height: 36px;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      border-radius: 12px;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .mouse-scroll::after {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 6px;
+      background: #FFFFFF;
+      border-radius: 2px;
+      animation: scrollAnim 1.8s infinite;
+    }
+
+    @keyframes scrollAnim {
+      0% { opacity: 1; transform: translate(-50%, 0); }
+      50% { opacity: 0.2; transform: translate(-50%, 8px); }
+      100% { opacity: 1; transform: translate(-50%, 0); }
+    }
+
+    /* FAQ accordion */
+    .faq-row {
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .faq-trigger {
+      width: 100%;
+      text-align: left;
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text-dark);
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.25s ease;
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .faq-content.open {
+      max-height: 300px;
+      padding-bottom: 24px;
+    }
+
+    .faq-icon {
+      transition: transform 0.25s ease;
+    }
+
+    .faq-row.open .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    /* Seamless Transition from White to Dark Closing Section */
+    .seamless-dark-transition {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 25%, #0B1638 75%, #040817 100%);
+      padding-top: 120px;
+    }
+  </style>
+</head>
+<body class="bg-[#F6F6F4] text-black">
+
+  <!-- ========================================================================= -->
+  <!-- SHADCN SKELETON NETWORK OFFLINE / FALLBACK OVERLAY -->
+  <!-- ========================================================================= -->
+  <div id="network-offline-overlay" class="fixed inset-0 z-[9999] bg-[#050B1A]/95 backdrop-blur-md flex flex-col items-center justify-center transition-all duration-500 opacity-0 pointer-events-none select-none">
+    
+    <!-- shadcn Skeleton Card Component (SkeletonDemo) -->
+    <div class="flex items-center gap-4 p-6 rounded-2xl bg-neutral-900/80 border border-white/10 shadow-2xl">
+      <!-- Circle Skeleton (Avatar) -->
+      <div class="h-12 w-12 rounded-full bg-slate-800 animate-pulse flex-shrink-0"></div>
+      <!-- Text Lines Skeleton -->
+      <div class="space-y-2">
+        <div class="h-4 w-[220px] sm:w-[250px] bg-slate-800 rounded-md animate-pulse"></div>
+        <div class="h-4 w-[170px] sm:w-[200px] bg-slate-800/70 rounded-md animate-pulse"></div>
+      </div>
+    </div>
+
+    <!-- Minimal Connection Recovery Indicator (Sin texto de cargando) -->
+    <div class="mt-6 flex items-center gap-2 text-xs font-mono font-medium tracking-widest text-slate-400 uppercase">
+      <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+      Sin conexión • Esperando señal...
+    </div>
+  </div>
+
+  <!-- Top Navbar (Pill Shape) -->
+  <header class="navbar-container">
+    <div class="w-full flex items-center justify-between">
+      
+      <!-- Brand Logo (Pure Clean Typography) -->
+      <a href="#hero" class="nav-logo text-white font-bold tracking-[0.25em] text-[16px] uppercase select-none hover:opacity-90 transition-colors">
+        KRONOS
+      </a>
+
+      <!-- Desktop Nav with Interactive Dropdowns (Mapping 1:1 to sections) -->
+      <nav class="hidden lg:flex items-center gap-1">
+        
+        <!-- Dropdown 1: Inventario -->
+        <div class="nav-dropdown-wrapper py-4">
+          <button class="nav-link-item flex items-center gap-1.5 px-3 py-1.5 text-[14px] text-slate-200 hover:text-white font-medium transition-colors">
+            <span data-i18n="navMenuInventory">Inventario</span>
+            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="#inventario-real" class="dropdown-item">
+              <div class="text-[13.5px] font-semibold text-slate-900 mb-0.5" data-i18n="navD1Title">Stock en Tiempo Real</div>
+              <div class="text-[12px] text-slate-500 leading-snug" data-i18n="navD1Desc">Modelos y capacidades listos para despacho hoy.</div>
+            </a>
+            <a href="#lotes" class="dropdown-item">
+              <div class="text-[13.5px] font-semibold text-slate-900 mb-0.5" data-i18n="navD2Title">Escala de Lotes y Precios</div>
+              <div class="text-[12px] text-slate-500 leading-snug" data-i18n="navD2Desc">Cotizaciones directas según volumen de compra.</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Dropdown 2: Garantías & Calidad -->
+        <div class="nav-dropdown-wrapper py-4">
+          <button class="nav-link-item flex items-center gap-1.5 px-3 py-1.5 text-[14px] text-slate-200 hover:text-white font-medium transition-colors">
+            <span data-i18n="navMenuQuality">Garantías & Calidad</span>
+            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="#certificacion" class="dropdown-item">
+              <div class="text-[13.5px] font-semibold text-slate-900 mb-0.5" data-i18n="navD3Title">Clean ESN y Batería</div>
+              <div class="text-[12px] text-slate-500 leading-snug" data-i18n="navD3Desc">Auditoría individual y 100% Factory Unlocked.</div>
+            </a>
+            <a href="#rma" class="dropdown-item">
+              <div class="text-[13.5px] font-semibold text-slate-900 mb-0.5" data-i18n="navD4Title">Política RMA Directa</div>
+              <div class="text-[12px] text-slate-500 leading-snug" data-i18n="navD4Desc">Reemplazo o nota de crédito sin trámites burocráticos.</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Dropdown 3: Operaciones -->
+        <div class="nav-dropdown-wrapper py-4">
+          <button class="nav-link-item flex items-center gap-1.5 px-3 py-1.5 text-[14px] text-slate-200 hover:text-white font-medium transition-colors">
+            <span data-i18n="navMenuOps">Operaciones</span>
+            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="#logistica" class="dropdown-item">
+              <div class="text-[13.5px] font-semibold text-slate-900 mb-0.5" data-i18n="navD5Title">Despacho en 24-48h</div>
+              <div class="text-[12px] text-slate-500 leading-snug" data-i18n="navD5Desc">Envíos asegurados con número de guía y tracking.</div>
+            </a>
+            <a href="#pagos" class="dropdown-item">
+              <div class="text-[13.5px] font-semibold text-slate-900 mb-0.5" data-i18n="navD6Title">Métodos de Pago</div>
+              <div class="text-[12px] text-slate-500 leading-snug" data-i18n="navD6Desc">Transferencias bancarias y USDT sin comisión.</div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Direct Link: FAQ -->
+        <a href="#faq" class="nav-link-item px-3 py-1.5 text-[14px] text-slate-200 hover:text-white font-medium transition-colors" data-i18n="navMenuFaq">
+          Preguntas Frecuentes
+        </a>
+
+      </nav>
+
+      <!-- Right Action CTAs & Language Switcher Pill -->
+      <div class="flex items-center gap-3">
+        
+        <!-- Language Switcher Pill (Interactive Switch Type) -->
+        <div class="nav-lang-pill flex items-center bg-white/10 border border-white/15 rounded-full p-0.5 text-[12px] font-semibold select-none shadow-sm transition-colors">
+          <button onclick="changeLang('es')" id="btn-lang-es" class="nav-lang-btn active-lang px-2.5 py-1 rounded-full transition-all duration-200 font-bold bg-white text-black shadow-sm" aria-label="Cambiar a Español">
+            ES
+          </button>
+          <button onclick="changeLang('en')" id="btn-lang-en" class="nav-lang-btn px-2.5 py-1 rounded-full transition-all duration-200 text-slate-400 hover:text-white" aria-label="Switch to English">
+            EN
+          </button>
+        </div>
+
+        <!-- Main Button (Clean White Pill, Desktop only) -->
+        <a id="nav-cta-link" href="https://wa.me/5492236715311?text=Hola!%20Quiero%20solicitar%20la%20lista%20de%20stock%20y%20precios%20mayoristas." target="_blank" class="nav-cta-btn hidden lg:inline-flex bg-white text-black hover:bg-slate-100 font-semibold text-[13.5px] px-5 py-2 rounded-full transition-all shadow-md items-center gap-2">
+          <span data-i18n="navCta">Consultar Stock</span>
+        </a>
+
+        <!-- Mobile menu trigger with animated hamburger to close X morphing spin effect -->
+        <button id="mobile-menu-trigger" onclick="toggleMobileMenu()" class="nav-mobile-btn lg:hidden p-2 text-slate-300 hover:text-white transition-transform duration-300 ease-out transform active:scale-90 select-none" aria-label="Abrir menú">
+          <svg id="icon-hamburger" class="w-6 h-6 transition-all duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg id="icon-close" class="w-6 h-6 hidden transition-all duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden fixed top-[88px] left-4 right-4 z-50 bg-black/95 backdrop-blur-2xl border border-white/15 rounded-2xl px-6 py-5 shadow-2xl">
+      <div class="flex flex-col gap-3 text-[14.5px]">
+        <div class="flex items-center justify-between py-2 border-b border-white/5">
+          <span class="text-slate-300 font-medium" data-i18n="mobileLangLabel">Idioma / Language</span>
+          <div class="flex items-center bg-white/10 border border-white/15 rounded-full p-0.5 text-[12px] font-semibold">
+            <button onclick="changeLang('es')" id="btn-lang-es-m" class="px-2.5 py-1 rounded-full transition-all font-bold bg-white text-black">ES</button>
+            <button onclick="changeLang('en')" id="btn-lang-en-m" class="px-2.5 py-1 rounded-full transition-all text-slate-400 hover:text-white">EN</button>
+          </div>
+        </div>
+        <a href="#inventario-real" onclick="toggleMobileMenu()" class="py-2 text-slate-200 border-b border-white/5" data-i18n="navMenuInventory">Inventario & Lotes</a>
+        <a href="#certificacion" onclick="toggleMobileMenu()" class="py-2 text-slate-200 border-b border-white/5" data-i18n="navMenuQuality">Garantías & Calidad</a>
+        <a href="#logistica" onclick="toggleMobileMenu()" class="py-2 text-slate-200 border-b border-white/5" data-i18n="navMenuOps">Operaciones & Despacho</a>
+        <a href="#faq" onclick="toggleMobileMenu()" class="py-2 text-slate-200 border-b border-white/5" data-i18n="navMenuFaq">Preguntas Frecuentes</a>
+        <a id="mobile-cta-link" href="https://wa.me/5492236715311?text=Hola!%20Quiero%20solicitar%20la%20lista%20de%20stock%20y%20precios%20mayoristas." target="_blank" class="mt-2 text-center bg-white text-black font-semibold py-2.5 rounded-full" data-i18n="mobileCta">
+          WhatsApp Mesa Comercial
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Backdrop Dimmer Overlay for Mobile Navigation Outside Click -->
+  <div id="mobile-menu-backdrop" onclick="toggleMobileMenu()" class="hidden fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden cursor-pointer"></div>
+
+  <!-- ========================================================================= -->
+  <!-- HERO SECTION (Estilo Prolibu: Azul Cobalto con Luz Suave - Centrado Perfecto) -->
+  <!-- ========================================================================= -->
+  <section id="hero" data-nav-theme="dark" class="prolibu-hero min-h-screen flex flex-col justify-center items-center text-center px-4 relative overflow-hidden">
+    
+    <!-- Ambient Light Container (Parallax Wrapper) -->
+    <div id="hero-ambient-wrapper" class="absolute inset-0 pointer-events-none overflow-hidden select-none">
+      <div id="hero-ambient-glow" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[950px] h-[550px] bg-gradient-to-r from-blue-600/75 via-blue-500/85 to-indigo-600/75 blur-[100px] rounded-full will-change-transform"></div>
+      <div id="hero-ambient-pulse" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] sm:w-[1250px] h-[750px] bg-sky-400/45 blur-[140px] rounded-full will-change-transform"></div>
+    </div>
+
+    <!-- Contenedor del Hero en el centro óptico y geométrico exacto -->
+    <div id="hero-parallax-container" class="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center will-change-transform my-auto">
+      
+      <!-- Eyebrow Header -->
+      <div class="text-[12px] sm:text-[13px] font-semibold tracking-[0.25em] text-blue-200/80 uppercase mb-6" data-i18n="heroEyebrow">
+        DISTRIBUCIÓN MAYORISTA DIRECTA
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-[clamp(36px,6vw,72px)] font-semibold tracking-[-0.02em] text-white mb-10 leading-[1.12] text-center max-w-3xl" data-i18n="heroTitle">
+        Abastecimiento mayorista de iPhones para revendedores.
+      </h1>
+
+      <!-- Primary Action CTA (Visible only on mobile/tablet viewports < lg) -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a id="hero-cta-btn" href="https://wa.me/5492236715311?text=Hola!%20Quiero%20solicitar%20la%20lista%20de%20precios%20de%20hoy." target="_blank" class="lg:hidden bg-white hover:bg-slate-100 text-black font-bold text-[14.5px] px-8 py-3.5 rounded-full transition-all shadow-lg inline-flex items-center justify-center hover:scale-105 active:scale-95">
+          <span data-i18n="heroBtn">Solicitar Lista de Precios de Hoy</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Mouse Scroll Indicator Pinned at Bottom Center -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
+      <div class="mouse-scroll" aria-label="Scroll indicator"></div>
+    </div>
+
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECCIÓN 2: AUDITORÍA TÉCNICA Y GARANTÍA (Vertical Dark Panoramic) -->
+  <!-- ========================================================================= -->
+  <section id="certificacion" data-nav-theme="dark" class="py-32 px-6 sm:px-12 bg-black text-white border-b border-neutral-900">
+    <div class="max-w-[1280px] mx-auto">
+      
+      <!-- Top Centered Header -->
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <div class="text-blue-400 text-[12px] font-bold tracking-[0.25em] uppercase mb-4" data-i18n="s2Eyebrow">
+          SEGURIDAD JURÍDICA Y TÉCNICA
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight text-white leading-[1.15] mb-6" data-i18n="s2Title">
+          La tranquilidad de saber que cada unidad llega lista para vender.
+        </h2>
+        <p class="text-neutral-400 text-[17px] leading-relaxed" data-i18n="s2Subtitle">
+          Tu reputación frente al cliente final es tu activo más valioso. Por eso cada dispositivo pasa por un protocolo estricto de auditoría individual.
+        </p>
+      </div>
+
+      <!-- Wide Panoramic Image -->
+      <div class="w-full h-64 sm:h-96 rounded-3xl overflow-hidden mb-16 shadow-2xl bg-neutral-900">
+        <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=1400&q=85" alt="Inspección Óptica de Hardware" class="w-full h-full object-cover">
+      </div>
+
+      <!-- 2 Open Columns Under Image -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 pt-8 border-t border-neutral-800">
+        <div>
+          <h3 class="text-2xl font-bold text-white mb-3" data-i18n="s2Col1Title">Clean ESN y Factory Unlocked</h3>
+          <p class="text-neutral-400 text-[15.5px] leading-relaxed" data-i18n="s2Col1Desc">
+            Cada número de serie (IMEI) es auditado en servidores oficiales de Apple y bases de datos GSMA. Garantizamos equipos 100% libres de fábrica, sin bloqueos de operadora, sin cuentas iCloud y con baterías en óptima salud.
+          </p>
+        </div>
+
+        <div id="rma">
+          <h3 class="text-2xl font-bold text-white mb-3" data-i18n="s2Col2Title">Garantía RMA Ágil y Directa</h3>
+          <p class="text-neutral-400 text-[15.5px] leading-relaxed" data-i18n="s2Col2Desc">
+            Nuestra tasa de fallo es inferior al 2%. Si una unidad presenta un defecto técnico no advertido, no hay trámites burocráticos: procedemos al reemplazo inmediato del equipo o emisión de nota de crédito.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECCIÓN 2.5: PROTOCOLO TÉCNICO DE CONTROL DE CALIDAD (Seamless Horizontal Parallax Track) -->
+  <!-- ========================================================================= -->
+  <section id="protocolo-section" data-nav-theme="light" class="py-28 sm:py-36 bg-[#FFFFFF] border-b border-[#EBEBEA] overflow-hidden">
+    <div class="max-w-[1280px] mx-auto px-6 sm:px-12">
+      
+      <!-- Section Header -->
+      <div class="max-w-3xl mb-12 sm:mb-16">
+        <div class="text-blue-600 text-[12px] font-bold tracking-[0.25em] uppercase mb-4" data-i18n="protoEyebrow">
+          CONTROL DE CALIDAD INDIVIDUAL
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight text-slate-900 leading-[1.15] mb-4 sm:mb-6" data-i18n="protoTitle">
+          Protocolo de auditoría técnica antes del despacho.
+        </h2>
+        <p class="text-slate-600 text-[17px] leading-relaxed" data-i18n="protoSubtitle">
+          Cada unidad es sometida a pruebas individuales exhaustivas para garantizar que recibes equipos 100% operativos y listos para entregar a tu cliente.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Horizontal Parallax Track (Side-by-side: Imagen a la Izquierda, Texto a la Derecha) -->
+    <div class="w-full overflow-hidden">
+      <div id="protocolo-track" class="flex gap-8 sm:gap-14 pl-6 sm:pl-12 w-max will-change-transform items-center py-4">
+        
+        <!-- Elemento 1 -->
+        <div class="w-[440px] sm:w-[580px] flex-shrink-0 flex flex-row items-center gap-6 sm:gap-8">
+          <div class="w-[200px] sm:w-[260px] h-[200px] sm:h-[260px] aspect-square rounded-2xl overflow-hidden bg-slate-100 shadow-md flex-shrink-0">
+            <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=800&h=800&q=85" alt="Auditoría ESN" class="w-full h-full object-cover aspect-square">
+          </div>
+          <div class="flex-1 flex flex-col justify-center">
+            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2" data-i18n="proto1Title">Auditoría ESN & GSMA</h3>
+            <p class="text-slate-600 text-[14.5px] sm:text-[15px] leading-relaxed" data-i18n="proto1Desc">
+              Comprobación directa en bases de Apple y GSMA. Equipos sin bloqueos de operadora, libres de fábrica y sin cuentas asociadas.
+            </p>
+          </div>
+        </div>
+
+        <!-- Elemento 2 -->
+        <div class="w-[440px] sm:w-[580px] flex-shrink-0 flex flex-row items-center gap-6 sm:gap-8">
+          <div class="w-[200px] sm:w-[260px] h-[200px] sm:h-[260px] aspect-square rounded-2xl overflow-hidden bg-slate-100 shadow-md flex-shrink-0">
+            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&h=800&q=85" alt="38 Puntos Hardware" class="w-full h-full object-cover aspect-square">
+          </div>
+          <div class="flex-1 flex flex-col justify-center">
+            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2" data-i18n="proto2Title">38 Puntos de Hardware</h3>
+            <p class="text-slate-600 text-[14.5px] sm:text-[15px] leading-relaxed" data-i18n="proto2Desc">
+              Diagnóstico técnico de cámaras, micrófonos, altavoces, conectores de carga, sensores biométricos y Face ID original.
+            </p>
+          </div>
+        </div>
+
+        <!-- Elemento 3 -->
+        <div class="w-[440px] sm:w-[580px] flex-shrink-0 flex flex-row items-center gap-6 sm:gap-8">
+          <div class="w-[200px] sm:w-[260px] h-[200px] sm:h-[260px] aspect-square rounded-2xl overflow-hidden bg-slate-100 shadow-md flex-shrink-0">
+            <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=800&h=800&q=85" alt="Salud Batería" class="w-full h-full object-cover aspect-square">
+          </div>
+          <div class="flex-1 flex flex-col justify-center">
+            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2" data-i18n="proto3Title">Salud de Batería Real</h3>
+            <p class="text-slate-600 text-[14.5px] sm:text-[15px] leading-relaxed" data-i18n="proto3Desc">
+              Medición de ciclos y retención de carga real superior al 85%, asegurando autonomía duradera y satisfacción del usuario final.
+            </p>
+          </div>
+        </div>
+
+        <!-- Elemento 4 -->
+        <div class="w-[440px] sm:w-[580px] flex-shrink-0 flex flex-row items-center gap-6 sm:gap-8 pr-6 sm:pr-12">
+          <div class="w-[200px] sm:w-[260px] h-[200px] sm:h-[260px] aspect-square rounded-2xl overflow-hidden bg-slate-100 shadow-md flex-shrink-0">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&h=800&q=85" alt="Limpieza & Precinto" class="w-full h-full object-cover aspect-square">
+          </div>
+          <div class="flex-1 flex flex-col justify-center">
+            <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2" data-i18n="proto4Title">Limpieza & Precinto</h3>
+            <p class="text-slate-600 text-[14.5px] sm:text-[15px] leading-relaxed" data-i18n="proto4Desc">
+              Higienización ultrasónica, empaque en fundas antiestáticas individuales y precintos de seguridad foliados para despacho.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECCIÓN 1: INVENTARIO & MODELOS EN ALMACÉN (Horizontal Split Feature) -->
+  <!-- ========================================================================= -->
+  <section id="inventario-real" data-nav-theme="light" class="py-32 px-6 sm:px-12 bg-[#FFFFFF] border-b border-[#EBEBEA]">
+    <div class="max-w-[1280px] mx-auto">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left: Editorial Narrative -->
+        <div class="lg:col-span-6 flex flex-col justify-center">
+          <div class="text-blue-600 text-[12px] font-bold tracking-[0.25em] uppercase mb-4" data-i18n="s1Eyebrow">
+            DISPONIBILIDAD INMEDIATA
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight text-slate-900 leading-[1.15] mb-6" data-i18n="s1Title">
+            Stock físico en rotación continua, sin esperas ni falsas promesas.
+          </h2>
+          <p class="text-slate-600 text-[17px] leading-relaxed mb-8" data-i18n="s1Subtitle">
+            Sabemos que en el negocio de reventa, quedarse sin vitrina o demorar semanas en un envío significa perder ventas. Mantenemos inventario real y listo para entrega inmediata.
+          </p>
+
+          <div class="space-y-6 pt-6 border-t border-slate-200">
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2" data-i18n="s1Col1Title">Stock en Tiempo Real</h3>
+              <p class="text-slate-600 text-[15px] leading-relaxed" data-i18n="s1Col1Desc">
+                Recibe cada mañana la lista consolidada con disponibilidad exacta por modelo (iPhone 16, 15, 14, 13 y 12), capacidades (128GB a 1TB) y colores.
+              </p>
+            </div>
+            <div id="lotes">
+              <h3 class="text-xl font-bold text-slate-900 mb-2" data-i18n="s1Col2Title">Escala de Lotes y Precios</h3>
+              <p class="text-slate-600 text-[15px] leading-relaxed" data-i18n="s1Col2Desc">
+                Precios diseñados para que tu margen sea predecible (30% a 40%). Apoyamos desde órdenes de prueba (3 a 5u) hasta compras consolidadas.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: High-Res Full Height Photography (Sin efecto hover zoom) -->
+        <div class="lg:col-span-6 h-[420px] sm:h-[520px] rounded-3xl overflow-hidden shadow-xl bg-slate-900">
+          <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=1200&q=85" alt="iPhone 16 Pro Titanium Hardware" class="w-full h-full object-cover">
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECCIÓN 3: LOGÍSTICA & DESPACHO EN 24-48H (Split Layout Invertido) -->
+  <!-- ========================================================================= -->
+  <section id="logistica" data-nav-theme="light" class="py-32 px-6 sm:px-12 bg-[#F8F8F6] border-b border-[#EBEBEA]">
+    <div class="max-w-[1280px] mx-auto">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left: Image -->
+        <div class="lg:col-span-6 h-[380px] sm:h-[480px] rounded-3xl overflow-hidden shadow-xl bg-slate-900 order-2 lg:order-1">
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85" alt="Despacho Asegurado" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Right: Text Content -->
+        <div class="lg:col-span-6 flex flex-col justify-center order-1 lg:order-2">
+          <div class="text-blue-600 text-[12px] font-bold tracking-[0.25em] uppercase mb-4" data-i18n="s3Eyebrow">
+            LOGÍSTICA Y DESPACHOS
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight text-slate-900 leading-[1.15] mb-6" data-i18n="s3Title">
+            Tu mercadería en tu local en 24 a 48 horas.
+          </h2>
+          <p class="text-slate-600 text-[17px] leading-relaxed mb-8" data-i18n="s3Subtitle">
+            Coordinamos envíos asegurados para que tu inversión viaje 100% protegida desde nuestro almacén hasta tu puerta.
+          </p>
+
+          <div class="space-y-6 pt-6 border-t border-slate-300">
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2" data-i18n="s3Col1Title">Despacho Veloz y Embalaje Seguro</h3>
+              <p class="text-slate-600 text-[15px] leading-relaxed" data-i18n="s3Col1Desc">
+                Cada lote se empaca con protección antiestática y precintos de seguridad. Despachamos en un plazo máximo de 24 a 48 horas hábiles.
+              </p>
+            </div>
+            <div id="pagos">
+              <h3 class="text-xl font-bold text-slate-900 mb-2" data-i18n="s3Col2Title">Métodos de Pago Directos</h3>
+              <p class="text-slate-600 text-[15px] leading-relaxed" data-i18n="s3Col2Desc">
+                Transferencias bancarias directas y pagos en criptoactivos (Binance Pay / USDT 0% fee), simplificando tus compras de cualquier volumen.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECCIÓN 3.6: CIFRAS OPERATIVAS Y TRAYECTORIA (Minimalista Oscura - Prueba Social) -->
+  <!-- ========================================================================= -->
+  <section id="metricas" data-nav-theme="dark" class="py-24 px-6 sm:px-12 bg-[#000000] text-white border-y border-neutral-900">
+    <div class="max-w-[1280px] mx-auto">
+      
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+        
+        <!-- Métrica 1 -->
+        <div>
+          <div class="text-4xl sm:text-6xl font-extrabold text-white mb-2 tracking-tight">
+            +<span class="counter" data-target="48500">0</span>
+          </div>
+          <div class="text-neutral-400 font-medium text-[15px]" data-i18n="metric1">
+            Dispositivos Despachados
+          </div>
+        </div>
+
+        <!-- Métrica 2 -->
+        <div>
+          <div class="text-4xl sm:text-6xl font-extrabold text-white mb-2 tracking-tight">
+            <span class="counter" data-target="99">0</span>.3%
+          </div>
+          <div class="text-neutral-400 font-medium text-[15px]" data-i18n="metric2">
+            Entregas en 24 a 48h
+          </div>
+        </div>
+
+        <!-- Métrica 3 -->
+        <div>
+          <div class="text-4xl sm:text-6xl font-extrabold text-white mb-2 tracking-tight">
+            &lt;<span class="counter" data-target="2">0</span>%
+          </div>
+          <div class="text-neutral-400 font-medium text-[15px]" data-i18n="metric3">
+            Tasa Histórica de RMA
+          </div>
+        </div>
+
+        <!-- Métrica 4 -->
+        <div>
+          <div class="text-4xl sm:text-6xl font-extrabold text-white mb-2 tracking-tight">
+            +<span class="counter" data-target="850">0</span>
+          </div>
+          <div class="text-neutral-400 font-medium text-[15px]" data-i18n="metric4">
+            Comercios & Revendedores
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECCIÓN 3.5: ESTRUCTURA DE RENTABILIDAD & MÁRGENES (Horizontal Rows Strip) -->
+  <!-- ========================================================================= -->
+  <section id="margenes" data-nav-theme="light" class="py-32 px-6 sm:px-12 bg-[#FFFFFF] border-b border-[#EBEBEA]">
+    <div class="max-w-[1280px] mx-auto">
+      
+      <div class="max-w-3xl mb-16">
+        <div class="text-blue-600 text-[12px] font-bold tracking-[0.25em] uppercase mb-4" data-i18n="marginEyebrow">
+          PREVISIBILIDAD COMERCIAL
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight text-slate-900 leading-[1.15] mb-6" data-i18n="marginTitle">
+          Precios estructurados para generar entre 30% y 40% de margen.
+        </h2>
+        <p class="text-slate-600 text-[17px] leading-relaxed" data-i18n="marginSubtitle">
+          Comprar a precio de origen te permite ofrecer tarifas highly competitivas en tu mercado local conservando una rentabilidad sólida y saludable.
+        </p>
+      </div>
+
+      <!-- 3 Horizontal Data Rows -->
+      <div class="divide-y divide-slate-200 border-y border-slate-200">
+        
+        <!-- Fila 1: iPhone 13 -->
+        <div class="py-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="md:w-5/12">
+            <div class="text-xs font-bold text-slate-400 uppercase mb-1" data-i18n="marginBadge1">ALTA ROTACIÓN</div>
+            <h3 class="text-2xl font-bold text-slate-900">iPhone 13 Series</h3>
+          </div>
+          <div class="md:w-4/12 text-sm text-slate-600" data-i18n="marginCard1Desc">
+            El modelo más vendido por volumen. Liquidez inmediata para comercios con ticket accesible.
+          </div>
+          <div class="md:w-3/12 md:text-right">
+            <div class="text-2xl font-black text-blue-600">38% - 42%</div>
+            <div class="text-xs text-slate-500 font-medium" data-i18n="marginLabel">Margen Promedio</div>
+          </div>
+        </div>
+
+        <!-- Fila 2: iPhone 14 -->
+        <div class="py-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="md:w-5/12">
+            <div class="text-xs font-bold text-slate-400 uppercase mb-1" data-i18n="marginBadge2">EQUILIBRIO PERFECTO</div>
+            <h3 class="text-2xl font-bold text-slate-900">iPhone 14 / 14 Pro</h3>
+          </div>
+          <div class="md:w-4/12 text-sm text-slate-600" data-i18n="marginCard2Desc">
+            Fuerte demanda en público joven y profesional. Excelente balance entre costo y reventa rápida.
+          </div>
+          <div class="md:w-3/12 md:text-right">
+            <div class="text-2xl font-black text-blue-600">34% - 37%</div>
+            <div class="text-xs text-slate-500 font-medium" data-i18n="marginLabel">Margen Promedio</div>
+          </div>
+        </div>
+
+        <!-- Fila 3: iPhone 15 / 16 -->
+        <div class="py-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="md:w-5/12">
+            <div class="text-xs font-bold text-slate-400 uppercase mb-1" data-i18n="marginBadge3">GAMA PREMIUM</div>
+            <h3 class="text-2xl font-bold text-slate-900">iPhone 15 & 16 Pro</h3>
+          </div>
+          <div class="md:w-4/12 text-sm text-slate-600" data-i18n="marginCard1Desc">
+            Máximo valor de vitrina. Márgenes netos elevados en dólares por cada unidad vendida.
+          </div>
+          <div class="md:w-3/12 md:text-right">
+            <div class="text-2xl font-black text-blue-600">30% - 35%</div>
+            <div class="text-xs text-slate-500 font-medium" data-i18n="marginLabel">Margen Promedio</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECCIÓN 3.7: CÓMO COMENZAR (Sticky Split 3-Step Narrative) -->
+  <!-- ========================================================================= -->
+  <section id="pasos" data-nav-theme="light" class="py-32 px-6 sm:px-12 bg-[#FFFFFF] border-b border-[#EBEBEA]">
+    <div class="max-w-[1280px] mx-auto">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        
+        <!-- Left: Sticky Column -->
+        <div class="lg:col-span-5">
+          <div class="lg:sticky lg:top-32">
+            <div class="text-blue-600 text-[12px] font-bold tracking-[0.25em] uppercase mb-4" data-i18n="stepsEyebrow">
+              OPERACIÓN SENCILLA
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight text-slate-900 leading-[1.15] mb-6" data-i18n="stepsTitle">
+              De la cotización a tu mostrador en tres pasos directos.
+            </h2>
+            <p class="text-slate-600 text-[17px] leading-relaxed font-normal" data-i18n="stepsSubtitle">
+              Un flujo comercial sin burocracia diseñado para mantener tu inventario siempre abastecido.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Vertical Numbered Steps Flow -->
+        <div class="lg:col-span-7 space-y-10 divide-y divide-slate-200">
+          
+          <!-- Paso 1 -->
+          <div class="pt-10 first:pt-0 flex gap-8 items-start">
+            <div class="text-4xl sm:text-5xl font-black text-blue-600 flex-shrink-0">01</div>
+            <div>
+              <h3 class="text-2xl font-bold text-slate-900 mb-3" data-i18n="step1Title">Solicita la Lista de Hoy</h3>
+              <p class="text-slate-600 text-[16px] leading-relaxed" data-i18n="step1Desc">
+                Contáctanos por WhatsApp para recibir la planilla de inventario con disponibilidad física en tiempo real y precios mayoristas congelados.
+              </p>
+            </div>
+          </div>
+
+          <!-- Paso 2 -->
+          <div class="pt-10 flex gap-8 items-start">
+            <div class="text-4xl sm:text-5xl font-black text-slate-900 flex-shrink-0">02</div>
+            <div>
+              <h3 class="text-2xl font-bold text-slate-900 mb-3" data-i18n="step2Title">Confirma tu Lote</h3>
+              <p class="text-slate-600 text-[16px] leading-relaxed" data-i18n="step2Desc">
+                Selecciona modelos, capacidades y cantidades. Emitimos orden de compra formal y congelamos tu cotización para proteger tu margen.
+              </p>
+            </div>
+          </div>
+
+          <!-- Paso 3 -->
+          <div class="pt-10 flex gap-8 items-start">
+            <div class="text-4xl sm:text-5xl font-black text-blue-600 flex-shrink-0">03</div>
+            <div>
+              <h3 class="text-2xl font-bold text-slate-900 mb-3" data-i18n="step3Title">Despacho & Vitrina</h3>
+              <p class="text-slate-600 text-[16px] leading-relaxed" data-i18n="step3Desc">
+                Enviamos con seguro total y guía en tiempo real. Recibes en 24 a 48 horas equipos testeados y 100% listos para la venta.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECCIÓN 4: PREGUNTAS FRECUENTES -->
+  <!-- ========================================================================= -->
+  <section id="faq" data-nav-theme="light" class="py-28 px-4 bg-[#F6F6F4]">
+    <div class="max-w-3xl mx-auto">
+      
+      <div class="text-center mb-16">
+        <div class="text-blue-600 text-[12px] font-bold tracking-[0.2em] uppercase mb-3" data-i18n="faqEyebrow">
+          RESOLUCIÓN DE DUDAS
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900 mb-4" data-i18n="faqTitle">
+          Preguntas frecuentes de revendedores.
+        </h2>
+      </div>
+
+      <div class="space-y-1">
+        
+        <div class="faq-row border-[#E5E5E2]">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span data-i18n="q1">¿Cómo se congela el precio al cotizar?</span>
+            <svg class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0 ml-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content">
+            <p data-i18n="a1">Al momento de confirmar tu orden de compra y generar el pago, el precio cotizado queda bloqueado hasta el momento de la entrega, protegiendo tu margen frente a fluctuaciones de mercado.</p>
+          </div>
+        </div>
+
+        <div class="faq-row border-[#E5E5E2]">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span data-i18n="q2">¿Cuál es el volumen mínimo para acceder a precio mayorista?</span>
+            <svg class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0 ml-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content">
+            <p data-i18n="a2">Atendemos desde pedidos iniciales de prueba para nuevos comercios hasta lotes cerrados de 50, 100 y 500+ unidades con escalas de descuento progresivas.</p>
+          </div>
+        </div>
+
+        <div class="faq-row border-[#E5E5E2]">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span data-i18n="q3">¿Cómo funciona la política de garantía RMA?</span>
+            <svg class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0 ml-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content">
+            <p data-i18n="a3">Todos los dispositivos cuentan con garantía directa sobre funcionalidad técnica. Si una unidad presenta un defecto de fábrica no advertido, se procede al reemplazo inmediato o nota de crédito.</p>
+          </div>
+        </div>
+
+        <div class="faq-row border-[#E5E5E2]">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span data-i18n="q4">¿Cómo se garantiza que los equipos son originales y Clean ESN?</span>
+            <svg class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0 ml-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-content">
+            <p data-i18n="a4">Cada número de serie (IMEI) es auditado en servidores oficiales de Apple y GSMA para confirmar que está 100% libre de fábrica, sin bloqueos de operadora ni cuentas asociadas.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECCIÓN 5: TARJETA FLOTANTE PROLIBU CON EFECTO DE OLEAJE AZUL LÍQUIDO -->
+  <!-- ========================================================================= -->
+  <section data-nav-theme="light" class="py-20 px-4 sm:px-6 bg-[#F6F6F4]">
+    <div class="max-w-[1240px] mx-auto">
+      
+      <div id="cta-wave-chamber-card" class="relative overflow-hidden rounded-[28px] sm:rounded-[36px] bg-[#030B20] p-10 sm:p-20 text-center text-white shadow-2xl cursor-default select-none">
+        
+        <!-- Liquid Blue Wave Chamber (Efecto de Oleaje Azul Líquido Multicapa con Seguimiento al Mouse) -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden select-none" aria-hidden="true">
+          <!-- Fondo base degradé cobalto profundo -->
+          <div class="absolute inset-0 bg-gradient-to-br from-[#020817] via-[#0B256B] to-[#041033]"></div>
+
+          <!-- Luz de foco dinámico GSAP que sigue al mouse -->
+          <div id="card-mouse-spotlight" class="absolute pointer-events-none rounded-full w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(56,189,248,0.55)_0%,_rgba(59,130,246,0.3)_40%,_transparent_75%)] blur-[40px] -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-300 will-change-transform z-0"></div>
+
+          <!-- Capa 1: Gran ola de marea profunda (Swell Wave) -->
+          <div id="blue-wave-1" class="absolute -top-[40%] -left-[30%] w-[170%] h-[200%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-600/85 via-blue-800/50 to-transparent blur-[55px] will-change-transform"></div>
+
+          <!-- Capa 2: Contra-ola de cresta cobalto eléctrico -->
+          <div id="blue-wave-2" class="absolute -bottom-[50%] -right-[30%] w-[170%] h-[200%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/80 via-indigo-950/60 to-transparent blur-[60px] will-change-transform"></div>
+
+          <!-- Capa 3: Ojo líquido dinámico (Sigue al cursor activamente) -->
+          <div id="blue-wave-3" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[160%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-400/80 via-blue-700/50 to-transparent blur-[45px] will-change-transform"></div>
+
+          <!-- Capa 4: Reflejo zafiro en deriva -->
+          <div id="blue-wave-4" class="absolute -top-[15%] left-[25%] w-[100%] h-[120%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/65 via-indigo-800/35 to-transparent blur-[40px] will-change-transform"></div>
+
+          <!-- Capa de Textura Suave de Micro-Ondulación -->
+          <div class="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_80%_80%_at_50%_50%,rgba(255,255,255,0.35)_0%,transparent_60%)] mix-blend-overlay"></div>
+        </div>
+
+        <div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
+          
+          <!-- Headline -->
+          <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight text-white leading-[1.2] mb-6" data-i18n="closingTitle">
+            ¿Listo para empezar a vender?
+          </h2>
+
+          <!-- Subtitle -->
+          <p class="text-blue-100/90 text-[16px] sm:text-[17.5px] leading-relaxed max-w-xl mx-auto mb-10 font-normal" data-i18n="closingDesc">
+            Precios de origen. Calidad garantizada. El inventario que tu negocio necesita, directo en tus manos.
+          </p>
+
+          <!-- Action Button: Radial Wave Ripple Pill (Efecto 2 - 100% Sin Contornos) -->
+          <div>
+            <a id="final-cta-btn" href="https://wa.me/5492236715311?text=Hola!%20Quiero%20solicitar%20la%20lista%20de%20precios%20de%20hoy." target="_blank" class="relative overflow-hidden bg-white text-slate-900 font-bold text-[14.5px] px-8 py-3.5 rounded-full shadow-2xl inline-flex items-center justify-center will-change-transform select-none cursor-pointer border-0 outline-none ring-0 focus:outline-none">
+              <!-- Radial Wave Ripple Element -->
+              <span id="btn-ripple-wave" class="absolute rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2 bg-[#000000] w-0 h-0 opacity-0 z-0"></span>
+              
+              <span id="final-cta-text" class="relative z-10 transition-colors" data-i18n="closingBtn">Solicitar Lista de Precios</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- FOOTER ESTILO PROLIBU (Negro Sólido, Doble de Longitud / Altura Majestuosa) -->
+  <!-- ========================================================================= -->
+  <footer data-nav-theme="dark" class="bg-black text-neutral-400 pt-36 pb-6 px-6 sm:px-12 min-h-[640px] flex flex-col justify-between">
+    <div class="max-w-[1360px] mx-auto w-full flex flex-col justify-between flex-grow">
+      
+      <!-- Top Layout: Logo on Left, Categorized Columns on Right -->
+      <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-24 pb-28">
+        
+        <!-- Left: Logo -->
+        <div class="flex-shrink-0">
+          <a href="#hero" class="text-white font-bold tracking-[0.28em] text-[18px] uppercase select-none hover:opacity-80 transition-opacity">
+            KRONOS
+          </a>
+        </div>
+
+        <!-- Right: Columns Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-10 sm:gap-14 lg:gap-20 flex-grow max-w-4xl">
+          
+          <!-- Col 1 -->
+          <div>
+            <div class="text-neutral-500 text-[11px] uppercase tracking-widest mb-6" data-i18n="fCol1Title">
+              INVENTARIO
+            </div>
+            <ul class="space-y-4 text-[14px]">
+              <li><a href="#inventario-real" class="text-neutral-300 hover:text-white transition-colors" data-i18n="navD1Title">Stock en Tiempo Real</a></li>
+              <li><a href="#lotes" class="text-neutral-300 hover:text-white transition-colors" data-i18n="navD2Title">Escala de Lotes</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 2 -->
+          <div>
+            <div class="text-neutral-500 text-[11px] uppercase tracking-widest mb-6" data-i18n="fCol2Title">
+              CALIDAD
+            </div>
+            <ul class="space-y-4 text-[14px]">
+              <li><a href="#certificacion" class="text-neutral-300 hover:text-white transition-colors" data-i18n="navD3Title">Clean ESN / IMEI</a></li>
+              <li><a href="#rma" class="text-neutral-300 hover:text-white transition-colors" data-i18n="navD4Title">Garantía RMA Directa</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 3 -->
+          <div>
+            <div class="text-neutral-500 text-[11px] uppercase tracking-widest mb-6" data-i18n="fCol3Title">
+              OPERACIONES
+            </div>
+            <ul class="space-y-4 text-[14px]">
+              <li><a href="#logistica" class="text-neutral-300 hover:text-white transition-colors" data-i18n="navD5Title">Despacho en 24-48h</a></li>
+              <li><a href="#pagos" class="text-neutral-300 hover:text-white transition-colors" data-i18n="navD6Title">Métodos de Pago</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 4 -->
+          <div>
+            <div class="text-neutral-500 text-[11px] uppercase tracking-widest mb-6" data-i18n="fCol4Title">
+              CONTACTO
+            </div>
+            <ul class="space-y-4 text-[14px]">
+              <li><a href="https://wa.me/5492236715311" target="_blank" class="text-neutral-300 hover:text-white transition-colors" data-i18n="fContactWa">Mesa Comercial Directa</a></li>
+              <li><a href="#faq" class="text-neutral-300 hover:text-white transition-colors" data-i18n="navMenuFaq">Preguntas Frecuentes</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Bottom Layout: Pegado al pie de la página -->
+      <div class="pt-8 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between gap-6 text-[12.5px] text-neutral-500 pb-2">
+        
+        <!-- Language Selector Pill / Button -->
+        <div class="flex items-center gap-2 bg-neutral-900/80 border border-neutral-800 rounded-lg px-3.5 py-2 text-neutral-300 text-xs">
+          <svg class="w-3.5 h-3.5 text-neutral-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          <button onclick="changeLang(currentLang === 'es' ? 'en' : 'es')" class="hover:text-white transition-colors">
+            <span data-i18n="fLangBtn">Español</span>
+          </button>
+        </div>
+
+        <!-- Copyright & Legal -->
+        <div class="flex flex-wrap items-center gap-6 text-center sm:text-right">
+          <span data-i18n="footerCopyright">© 2026 KRONOS</span>
+          <span>•</span>
+          <span class="hover:text-neutral-400 cursor-pointer" data-i18n="fTerms">Términos de Servicio</span>
+          <span>•</span>
+          <span class="hover:text-neutral-400 cursor-pointer" data-i18n="fPrivacy">Política de Privacidad</span>
+        </div>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT: BILINGUAL ENGINE, SCROLL REVEAL & NATURAL EASE-OUT SCROLL -->
+  <!-- ========================================================================= -->
+  <script>
+    let currentLang = localStorage.getItem('kronos_lang') || 'es';
+
+    const translations = {
+      es: {
+        pageTitle: 'KRONOS — Distribución Mayorista de iPhones',
+        pageDesc: 'Abastecimiento mayorista directo de iPhones para comerciantes y revendedores. Stock continuo, precios de origen y calidad garantizada.',
+        navMenuInventory: 'Inventario',
+        navMenuQuality: 'Garantías & Calidad',
+        navMenuOps: 'Operaciones',
+        navMenuFaq: 'Preguntas Frecuentes',
+        navD1Title: 'Stock en Tiempo Real',
+        navD1Desc: 'Modelos y capacidades listos para despacho hoy.',
+        navD2Title: 'Escala de Lotes y Precios',
+        navD2Desc: 'Cotizaciones directas según volumen de compra.',
+        navD3Title: 'Clean ESN / IMEI',
+        navD3Desc: 'Sin bloqueos de operador ni cuentas. 100% libres.',
+        navD4Title: 'Política RMA Directa',
+        navD4Desc: 'Reemplazo o reembolso ágil ante fallas de fábrica.',
+        navD5Title: 'Despacho en 24-48h',
+        navD5Desc: 'Envíos asegurados con número de guía y tracking.',
+        navD6Title: 'Métodos de Pago',
+        navD6Desc: 'Transferencias bancarias y USDT sin comisión.',
+        navCta: 'Consultar Stock',
+        mobileLangLabel: 'Idioma / Language',
+        mobileCta: 'Consultar Stock por WhatsApp',
+        heroEyebrow: 'DISTRIBUCIÓN MAYORISTA DIRECTA',
+        heroTitle: 'Abastecimiento mayorista de iPhones para revendedores.',
+        heroSubtitle: 'Precios de origen con margen comercial garantizado, stock en rotación continua y despacho en 24-48h. El socio de inventario que tu negocio necesita.',
+        heroBtn: 'Solicitar Lista de Precios de Hoy',
+        s1Eyebrow: 'DISPONIBILIDAD INMEDIATA',
+        s1Title: 'Stock físico en rotación continua, sin esperas ni falsas promesas.',
+        s1Subtitle: 'Sabemos que en el negocio de reventa, quedarse sin vitrina o demorar semanas en un envío significa perder ventas. Mantenemos inventario real y listo para entrega.',
+        s1Col1Title: 'Stock en Tiempo Real',
+        s1Col1Desc: 'Recibe cada mañana la lista consolidada con disponibilidad exacta por modelo (iPhone 16, 15, 14, 13 y 12), capacidades (128GB a 1TB) y colores. Sin sorpresas al momento de transferir.',
+        s1Col1Badge: 'Actualización diaria vía WhatsApp',
+        s1Col2Title: 'Escala de Lotes y Precios',
+        s1Col2Desc: 'Precios diseñados para que tu margen sea predecible (30% a 40%). Apoyamos desde órdenes iniciales de prueba (3 a 5 unidades) hasta compras consolidadas con tarifas preferenciales.',
+        s1Col2Badge: 'Cotizaciones congeladas por 7 días',
+        s2Eyebrow: 'SEGURIDAD JURÍDICA Y TÉCNICA',
+        s2Title: 'La tranquilidad de saber que cada unidad llega lista para vender.',
+        s2Subtitle: 'Tu reputación frente al cliente final es tu activo más valioso. Por eso cada dispositivo pasa por un protocolo estricto de auditoría individual.',
+        s2Col1Title: 'Clean ESN y Factory Unlocked',
+        s2Col1Desc: 'Cada número de serie (IMEI) es auditado en servidores oficiales de Apple y bases de datos GSMA. Garantizamos equipos 100% libres de fábrica, sin bloqueos de operadora, sin cuentas iCloud y con baterías en óptima salud.',
+        s2Col2Title: 'Garantía RMA Ágil y Directa',
+        s2Col2Desc: 'Nuestra tasa de fallo es inferior al 2%. Si una unidad presenta un defecto técnico no advertido, no hay trámites burocráticos: procedemos al reemplazo inmediato del equipo o emisión de nota de crédito.',
+        s3Eyebrow: 'LOGÍSTICA Y DESPACHOS',
+        s3Title: 'Tu mercadería en tu local en 24 a 48 horas.',
+        s3Subtitle: 'Coordinamos envíos asegurados para que tu inversión viaje 100% protegida desde nuestro almacén hasta tu puerta.',
+        s3Col1Title: 'Despacho Veloz y Embalaje Seguro',
+        s3Col1Desc: 'Cada lote se empaca con protección antiestática y precintos de seguridad. Despachamos en un plazo máximo de 24 a 48 horas hábiles, entregando número de guía y seguimiento en tiempo real.',
+        s3Col1Badge: 'Cobertura nacional e internacional',
+        s3Col2Title: 'Métodos de Pago Directos',
+        s3Col2Desc: 'Facilitamos tus transacciones comerciales mediante transferencias bancarias directas y pagos en criptoactivos (Binance Pay / USDT sin comisión de 0%), simplificando compras de cualquier volumen.',
+        s3Col2Badge: 'Comprobantes y órdenes formales de compra',
+        // Protocolo
+        protoEyebrow: 'CONTROL DE CALIDAD INDIVIDUAL',
+        protoTitle: 'Protocolo de auditoría en 4 fases antes del despacho.',
+        protoSubtitle: 'Cada unidad es sometida a pruebas individuales exhaustivas para garantizar que recibes equipos 100% operativos y listos para entregar a tu cliente.',
+        proto1Title: 'Auditoría ESN & GSMA',
+        proto1Desc: 'Comprobación directa en bases de Apple y GSMA. Equipos sin bloqueos de operadora, libres de fábrica y sin cuentas asociadas.',
+        proto1Badge: '100% Factory Unlocked',
+        proto2Title: '38 Puntos de Hardware',
+        proto2Desc: 'Diagnóstico técnico de cámaras, micrófonos, altavoces, conectores de carga, sensores biométricos y Face ID original.',
+        proto2Badge: 'Diagnóstico Integral',
+        proto3Title: 'Salud de Batería Real',
+        proto3Desc: 'Medición de ciclos y retención de carga real superior al 85%, asegurando autonomía duradera y satisfacción del usuario final.',
+        proto3Badge: 'Batería Verificada >85%',
+        proto4Title: 'Limpieza & Precinto',
+        proto4Desc: 'Higienización ultrasónica, empaque en fundas antiestáticas individuales y precintos de seguridad foliados para despacho.',
+        proto4Badge: 'Embalaje de Seguridad',
+        // Márgenes
+        marginEyebrow: 'PREVISIBILIDAD COMERCIAL',
+        marginTitle: 'Precios estructurados para generar entre 30% y 40% de margen.',
+        marginSubtitle: 'Comprar a precio de origen te permite ofrecer tarifas altamente competitivas en tu mercado local conservando una rentabilidad sólida y saludable.',
+        marginBadge1: 'ALTA ROTACIÓN',
+        marginBadge2: 'EQUILIBRIO PERFECTO',
+        marginBadge3: 'GAMA PREMIUM',
+        marginCard1Desc: 'El modelo más vendido por volumen. Liquidez inmediata para comercios con ticket accesible.',
+        marginCard2Desc: 'Fuerte demanda en público joven y profesional. Excelente balance entre costo y reventa rápida.',
+        marginCard3Desc: 'Máximo valor de vitrina. Márgenes netos elevados en dólares por cada unidad vendida.',
+        marginLabel: 'Margen Promedio',
+        // Métricas
+        metric1: 'Dispositivos Despachados',
+        metric2: 'Entregas en 24 a 48h',
+        metric3: 'Tasa Histórica de RMA',
+        metric4: 'Comercios & Revendedores',
+        // Pasos
+        stepsEyebrow: 'OPERACIÓN SENCILLA',
+        stepsTitle: 'De la cotización a tu mostrador en 3 pasos directos.',
+        step1Title: 'Solicitas la Lista Diaria',
+        step1Desc: 'Te contactas por WhatsApp y recibes la planilla actualizada con unidades físicas disponibles y precios de origen.',
+        step2Title: 'Congelas tu Cotización',
+        step2Desc: 'Confirmas las unidades requeridas para tu negocio. El precio queda bloqueado y protegido frente a cualquier variación del mercado.',
+        step3Title: 'Despacho y Reventa',
+        step3Desc: 'Despachamos tu pedido con seguro y número de tracking. Recibes en 24-48h mercadería verificada y lista para exhibir y vender.',
+        faqEyebrow: 'RESOLUCIÓN DE DUDAS',
+        faqTitle: 'Preguntas frecuentes de revendedores.',
+        q1: '¿Cómo se congela el precio al cotizar?',
+        a1: 'Al momento de confirmar tu orden de compra y generar el pago, el precio cotizado queda bloqueado hasta el momento de la entrega, protegiendo tu margen frente a fluctuaciones de mercado.',
+        q2: '¿Cuál es el volumen mínimo para acceder a precio mayorista?',
+        a2: 'Atendemos desde pedidos iniciales de prueba para nuevos comercios hasta lotes cerrados de 50, 100 y 500+ unidades con escalas de descuento progresivas.',
+        q3: '¿Cómo funciona la política de garantía RMA?',
+        a3: 'Todos los dispositivos cuentan con garantía directa sobre funcionalidad técnica. Si una unidad presenta un defecto de fábrica no advertido, se procede al reemplazo inmediato o nota de crédito.',
+        q4: '¿Cómo se garantiza que los equipos son originales y Clean ESN?',
+        a4: 'Cada número de serie (IMEI) es auditado en servidores oficiales de Apple y GSMA para confirmar que está 100% libre de fábrica, sin bloqueos de operadora ni cuentas asociadas.',
+        closingTitle: '¿Listo para empezar a vender?',
+        closingDesc: 'Precios de origen. Calidad garantizada. El inventario que tu negocio necesita, directo en tus manos.',
+        closingBtn: 'Solicitar Lista de Precios',
+        fCol1Title: 'INVENTARIO',
+        fCol2Title: 'CALIDAD',
+        fCol3Title: 'OPERACIONES',
+        fCol4Title: 'CONTACTO',
+        fContactWa: 'Contacto por WhatsApp',
+        fLangBtn: 'Español',
+        fTerms: 'Términos de Servicio',
+        fPrivacy: 'Política de Privacidad',
+        footerCopyright: '© 2026 KRONOS',
+        waMessageHero: 'Hola! Quiero solicitar la lista de precios de hoy.',
+        waMessageNav: 'Hola! Quiero consultar el stock disponible.'
+      },
+      en: {
+        pageTitle: 'KRONOS — Wholesale iPhone Distribution',
+        pageDesc: 'Direct wholesale iPhone supplier for retailers and resellers. Continuous physical stock, source pricing, and guaranteed technical quality.',
+        navMenuInventory: 'Inventory',
+        navMenuQuality: 'Quality & Warranty',
+        navMenuOps: 'Operations',
+        navMenuFaq: 'FAQ',
+        navD1Title: 'Real-Time Physical Stock',
+        navD1Desc: 'Exact models and capacities ready to ship today.',
+        navD2Title: 'Lot Tiers & Volume Pricing',
+        navD2Desc: 'Tiered wholesale pricing based on purchase volume.',
+        navD3Title: 'Clean ESN / IMEI Assured',
+        navD3Desc: 'Zero carrier or iCloud locks. 100% factory unlocked.',
+        navD4Title: 'Direct RMA Warranty',
+        navD4Desc: 'Agile replacement or credit note for manufacturing flaws.',
+        navD5Title: '24-48h Insured Dispatch',
+        navD5Desc: 'Insured transit with live tracking from warehouse to door.',
+        navD6Title: 'Flexible Direct Payments',
+        navD6Desc: 'Direct wire transfers and 0% fee crypto USDT.',
+        navCta: 'Check Live Stock',
+        mobileLangLabel: 'Language',
+        mobileCta: 'Check Stock on WhatsApp',
+        heroEyebrow: 'DIRECT WHOLESALE DISTRIBUTION',
+        heroTitle: 'Direct wholesale iPhone supplier for retail merchants.',
+        heroSubtitle: 'Source pricing with protected 30-40% resale margins, continuous inventory and 24-48h dispatch. The inventory partner your store needs.',
+        heroBtn: 'Request Today\'s Price Sheet',
+        s1Eyebrow: 'IMMEDIATE DISPATCH',
+        s1Title: 'Continuous physical stock, no delays and no false promises.',
+        s1Subtitle: 'In the resale business, an empty showcase or shipping delays mean lost sales. We maintain ready-to-ship physical warehouse stock.',
+        s1Col1Title: 'Real-Time Physical Stock',
+        s1Col1Desc: 'Receive daily updated inventory sheets detailing exact models (iPhone 16, 15, 14, 13, 12), capacities (128GB to 1TB), and colors. Zero surprises when transferring.',
+        s1Col1Badge: 'Daily updates via WhatsApp',
+        s1Col2Title: 'Lot Scaling & Wholesale Pricing',
+        s1Col2Desc: 'Pricing structured for predictable margins (30% to 40%). We support test orders (3 to 5 units) up to consolidated merchant batches with volume rates.',
+        s1Col2Badge: 'Quotes frozen for 7 days',
+        s2Eyebrow: 'LEGAL & TECHNICAL ASSURANCE',
+        s2Title: 'Peace of mind knowing every unit arrives 100% retail-ready.',
+        s2Subtitle: 'Your end-customer reputation is your core asset. Every device passes a rigorous 4-phase individual laboratory inspection.',
+        s2Col1Title: 'Clean ESN & Factory Unlocked',
+        s2Col1Desc: 'Every IMEI audited directly across official Apple and GSMA servers. 100% factory unlocked, zero carrier restrictions, zero iCloud ties, and optimal battery health.',
+        s2Col2Title: 'Agile Direct RMA Warranty',
+        s2Col2Desc: 'Defect rate below 2%. If an unforeseen technical fault occurs, no bureaucracy: we issue an immediate replacement device or credit note.',
+        s3Eyebrow: 'LOGISTICS & DISPATCH',
+        s3Title: 'Your inventory at your storefront in 24 to 48 hours.',
+        s3Subtitle: 'Insured shipments ensure your capital travels 100% protected from our warehouse to your door.',
+        s3Col1Title: 'Fast Dispatch & Secure Packaging',
+        s3Col1Desc: 'Every batch is packaged in individual antistatic sleeves and serialized tamper seals. We ship within 24 to 48 business hours with live tracking.',
+        s3Col1Badge: 'National & international coverage',
+        s3Col2Title: 'Direct B2B Payment Methods',
+        s3Col2Desc: 'Direct bank wires and crypto (Binance Pay / USDT 0% network fee) simplifying recurring purchasing at any volume.',
+        s3Col2Badge: 'Official purchase invoices & receipts',
+        // Protocol EN
+        protoEyebrow: 'INDIVIDUAL QUALITY CONTROL',
+        protoTitle: '4-Phase technical audit protocol before dispatch.',
+        protoSubtitle: 'Every single phone undergoes rigorous functional diagnostics to ensure 100% operational hardware ready to hand over to your customer.',
+        proto1Title: 'ESN & GSMA Audit',
+        proto1Desc: 'Direct Apple and GSMA database audit. Unlocked factory devices with zero carrier ties or active accounts.',
+        proto1Badge: '100% Factory Unlocked',
+        proto2Title: '38-Point Hardware Audit',
+        proto2Desc: 'Technical diagnostics of cameras, microphones, speakers, charging ports, biometrics, and original Face ID.',
+        proto2Badge: 'Full Diagnostic',
+        proto3Title: 'Verified Battery Health',
+        proto3Desc: 'Real cycle and retention testing ensuring >85% capacity for long-lasting end-user satisfaction.',
+        proto3Badge: 'Battery Health >85%',
+        proto4Title: 'Ultrasonic Clean & Seal',
+        proto4Desc: 'Deep ultrasonic sanitization, individual antistatic packaging, and tamper-evident security seals.',
+        proto4Badge: 'Secure Packaging',
+        // Margins EN
+        marginEyebrow: 'COMMERCIAL PREDICTABILITY',
+        marginTitle: 'Structured pricing for predictable 30% to 40% gross margins.',
+        marginSubtitle: 'Source-level wholesale prices give you the room to compete locally while keeping strong, predictable dollar profits.',
+        marginBadge1: 'HIGH ROTATION',
+        marginBadge2: 'PERFECT BALANCE',
+        marginBadge3: 'PREMIUM TIER',
+        marginCard1Desc: 'Our highest volume runner. Immediate liquidity and accessible ticket sizes for solo resellers.',
+        marginCard2Desc: 'High demand across young professionals. Perfect equilibrium between inventory cost and quick turnover.',
+        marginCard3Desc: 'Highest storefront value. Maximum dollar profit per closed customer transaction.',
+        marginLabel: 'Average Margin',
+        // Metrics EN
+        metric1: 'Dispatched Devices',
+        metric2: '24 to 48h Deliveries',
+        metric3: 'Historical RMA Rate',
+        metric4: 'Active Merchant Partners',
+        // Steps EN
+        stepsEyebrow: 'STREAMLINED WORKFLOW',
+        stepsTitle: 'From quote to your storefront in 3 simple steps.',
+        step1Title: 'Request Today’s Sheet',
+        step1Desc: 'Reach our direct sales desk on WhatsApp to get the daily consolidated sheet with physical inventory.',
+        step2Title: 'Lock Your Quote',
+        step2Desc: 'Confirm your required units. Your price quote is frozen and protected against market fluctuations.',
+        step3Title: 'Dispatch & Resell',
+        step3Desc: 'We dispatch insured with tracking. Receive tested, retail-ready iPhones ready to sell at your store.',
+        faqEyebrow: 'COMMON QUESTIONS',
+        faqTitle: 'Frequently asked questions by resellers.',
+        q1: 'How is the quote price locked?',
+        a1: 'Once you confirm your purchase order and submit payment, your quoted price is frozen through shipment, protecting your margins against market swings.',
+        q2: 'What is the minimum volume for wholesale pricing?',
+        a2: 'We support trial sample orders for new businesses up to bulk lots of 50, 100, and 500+ units with progressive volume discounts.',
+        q3: 'How does the RMA warranty work?',
+        a3: 'All devices carry full functional warranty. If an unforeseen factory defect arises, we issue an immediate replacement or credit note.',
+        q4: 'How is Clean ESN and authenticity verified?',
+        a4: 'Every serial number (IMEI) is audited against Apple and GSMA global databases to ensure zero carrier or account locks.',
+        closingTitle: 'Ready to start selling?',
+        closingDesc: 'Source pricing. Guaranteed quality. The inventory your business needs, directly in your hands.',
+        closingBtn: 'Request Price List',
+        fCol1Title: 'INVENTORY',
+        fCol2Title: 'QUALITY',
+        fCol3Title: 'OPERATIONS',
+        fCol4Title: 'CONTACT',
+        fContactWa: 'WhatsApp Contact',
+        fLangBtn: 'English',
+        fTerms: 'Terms of Service',
+        fPrivacy: 'Privacy Policy',
+        footerCopyright: '© 2026 KRONOS',
+        waMessageHero: 'Hello! I would like to request today\'s wholesale price list.',
+        waMessageNav: 'Hello! I would like to check available stock.'
+      }
+    };
+
+    function changeLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('kronos_lang', lang);
+      document.documentElement.lang = lang;
+
+      // Update Switch Pill Buttons (Desktop and Mobile)
+      const btnEs = document.getElementById('btn-lang-es');
+      const btnEn = document.getElementById('btn-lang-en');
+      const btnEsM = document.getElementById('btn-lang-es-m');
+      const btnEnM = document.getElementById('btn-lang-en-m');
+
+      const activeClass = 'px-2.5 py-1 rounded-full transition-all duration-200 font-bold bg-white text-black shadow-sm';
+      const inactiveClass = 'px-2.5 py-1 rounded-full transition-all duration-200 text-slate-400 hover:text-white';
+
+      if (btnEs && btnEn) {
+        if (lang === 'es') {
+          btnEs.className = activeClass;
+          btnEn.className = inactiveClass;
+        } else {
+          btnEn.className = activeClass;
+          btnEs.className = inactiveClass;
+        }
+      }
+
+      if (btnEsM && btnEnM) {
+        if (lang === 'es') {
+          btnEsM.className = activeClass;
+          btnEnM.className = inactiveClass;
+        } else {
+          btnEnM.className = activeClass;
+          btnEsM.className = inactiveClass;
+        }
+      }
+
+      // Update Document Meta Titles
+      if (translations[lang].pageTitle) {
+        document.title = translations[lang].pageTitle;
+      }
+      const pageDescEl = document.getElementById('page-desc');
+      if (pageDescEl && translations[lang].pageDesc) {
+        pageDescEl.setAttribute('content', translations[lang].pageDesc);
+      }
+
+      // Update All data-i18n DOM Elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.innerText = translations[lang][key];
+        }
+      });
+
+      // Update WhatsApp links with dynamic translated text
+      const navCta = document.getElementById('nav-cta-link');
+      if (navCta) {
+        navCta.href = `https://wa.me/5492236715311?text=${encodeURIComponent(translations[lang].waMessageNav)}`;
+      }
+
+      const heroCta = document.getElementById('hero-cta-btn');
+      if (heroCta) {
+        heroCta.href = `https://wa.me/5492236715311?text=${encodeURIComponent(translations[lang].waMessageHero)}`;
+      }
+
+      const finalCta = document.getElementById('final-cta-btn');
+      if (finalCta) {
+        finalCta.href = `https://wa.me/5492236715311?text=${encodeURIComponent(translations[lang].waMessageHero)}`;
+      }
+
+      const mobileCta = document.getElementById('mobile-cta-link');
+      if (mobileCta) {
+        mobileCta.href = `https://wa.me/5492236715311?text=${encodeURIComponent(translations[lang].waMessageNav)}`;
+      }
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const triggerBtn = document.getElementById('mobile-menu-trigger');
+      const backdrop = document.getElementById('mobile-menu-backdrop');
+      const iconHamburger = document.getElementById('icon-hamburger');
+      const iconClose = document.getElementById('icon-close');
+
+      if (!menu) return;
+
+      menu.classList.toggle('hidden');
+      const isOpen = !menu.classList.contains('hidden');
+
+      if (triggerBtn) {
+        if (isOpen) {
+          triggerBtn.classList.add('rotate-90');
+        } else {
+          triggerBtn.classList.remove('rotate-90');
+        }
+      }
+
+      if (iconHamburger && iconClose) {
+        if (isOpen) {
+          iconHamburger.classList.add('hidden');
+          iconClose.classList.remove('hidden');
+        } else {
+          iconHamburger.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+        }
+      }
+
+      if (backdrop) {
+        if (isOpen) {
+          backdrop.classList.remove('hidden');
+        } else {
+          backdrop.classList.add('hidden');
+        }
+      }
+    }
+
+    // Listener global para cerrar la navegación al pulsar fuera de la tarjeta de contenido
+    document.addEventListener('click', function (e) {
+      const menu = document.getElementById('mobile-menu');
+      const trigger = document.getElementById('mobile-menu-trigger');
+      if (!menu || menu.classList.contains('hidden')) return;
+
+      if (!menu.contains(e.target) && !trigger.contains(e.target)) {
+        toggleMobileMenu();
+      }
+    });
+
+    function toggleFaq(button) {
+      const row = button.closest('.faq-row');
+      const content = row.querySelector('.faq-content');
+      const isOpen = content.classList.contains('open');
+
+      document.querySelectorAll('.faq-content').forEach(c => c.classList.remove('open'));
+      document.querySelectorAll('.faq-row').forEach(r => r.classList.remove('open'));
+
+      if (!isOpen) {
+        content.classList.add('open');
+        row.classList.add('open');
+      }
+    }
+
+    // Detector de Conexión a Internet: Muestra el Skeleton únicamente ante fallos de red
+    const offlineOverlay = document.getElementById('network-offline-overlay');
+    function updateNetworkStatus() {
+      if (!offlineOverlay) return;
+      if (!navigator.onLine) {
+        offlineOverlay.classList.remove('opacity-0', 'pointer-events-none');
+        offlineOverlay.classList.add('opacity-100', 'pointer-events-auto');
+      } else {
+        offlineOverlay.classList.remove('opacity-100', 'pointer-events-auto');
+        offlineOverlay.classList.add('opacity-0', 'pointer-events-none');
+      }
+    }
+
+    window.addEventListener('online', updateNetworkStatus);
+    window.addEventListener('offline', updateNetworkStatus);
+    if (!navigator.onLine) {
+      updateNetworkStatus();
+    }
+
+    // Inicializar Lenis (Configuración exacta de referencia)
+    let lenis;
+    if (typeof Lenis !== 'undefined') {
+      lenis = new Lenis({
+        duration: 1.8,     // Duración del freno en segundos (más lento y pesado)
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Función de desaceleración matemática
+        orientation: 'vertical', 
+        gestureOrientation: 'vertical',
+        smoothWheel: true, // Activar scroll suave para la rueda del mouse
+        wheelMultiplier: 0.9, // Sensibilidad de la rueda
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+    }
+
+    // =========================================================================
+    // SUITE DE ANIMACIONES GSAP + SCROLLTRIGGER
+    // =========================================================================
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+
+      if (lenis) {
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => {
+          lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+      }
+
+      // 1. Animación de entrada inicial del Hero al cargar
+      const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      heroTl.from("#hero [data-i18n='heroEyebrow']", { opacity: 0, y: 25, duration: 0.9, delay: 0.2 })
+            .from("#hero h1", { opacity: 0, y: 35, duration: 1.1 }, "-=0.6")
+            .from("#hero-cta-btn", { opacity: 0, scale: 0.92, y: 20, duration: 0.85, ease: "back.out(1.4)" }, "-=0.6")
+            .from(".mouse-scroll", { opacity: 0, duration: 0.8 }, "-=0.3");
+
+      // 2. Efecto Parallax en el Hero al scrollear
+      gsap.to("#hero-parallax-container", {
+        scrollTrigger: {
+          trigger: "#hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+        y: 180,
+        scale: 0.82,
+        opacity: 0,
+        ease: "none"
+      });
+
+      gsap.to("#hero-ambient-wrapper", {
+        scrollTrigger: {
+          trigger: "#hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+        y: 120,
+        opacity: 0,
+        ease: "none"
+      });
+
+      // 2.5. GSAP Horizontal Track (Pinned: La pantalla se bloquea hasta recorrer la última tarjeta)
+      const protoTrack = document.getElementById('protocolo-track');
+      const protoSection = document.getElementById('protocolo-section');
+      window.isNavbarNavigating = false;
+
+      if (protoTrack && protoSection) {
+        window.protoST = ScrollTrigger.create({
+          id: "protoST",
+          trigger: protoSection,
+          pin: true,
+          start: "top top",
+          end: () => `+=${protoTrack.scrollWidth - window.innerWidth + 300}`,
+          scrub: 1.2,
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
+          onUpdate: (self) => {
+            // Si la navegación proviene del navbar, congelamos el desplazamiento horizontal por completo
+            if (!window.isNavbarNavigating) {
+              const maxShift = -(protoTrack.scrollWidth - window.innerWidth + 96);
+              gsap.set(protoTrack, { x: self.progress * maxShift });
+            }
+          }
+        });
+      }
+
+      // 3. Revelado Tipográfico en Titulares Principales (Apple Keynote Style)
+      const headings = document.querySelectorAll('section h2');
+      headings.forEach(heading => {
+        gsap.from(heading, {
+          scrollTrigger: {
+            trigger: heading,
+            start: "top 88%",
+            toggleActions: "play none none none"
+          },
+          y: 35,
+          opacity: 0,
+          duration: 0.9,
+          ease: "power3.out"
+        });
+      });
+
+      // 4. Revelado de párrafos y subtítulos
+      const sectionSubtitles = document.querySelectorAll('section .max-w-3xl > p, section .max-w-3xl > div[data-i18n]');
+      sectionSubtitles.forEach(el => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 88%",
+            toggleActions: "play none none none",
+          },
+          opacity: 0,
+          y: 25,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+      });
+
+      // 5. Animación de Contadores Numéricos en Métricas
+      document.querySelectorAll('.counter').forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        gsap.fromTo(counter, 
+          { innerText: 0 }, 
+          {
+            innerText: target,
+            duration: 2.2,
+            ease: "power2.out",
+            snap: { innerText: 1 },
+            scrollTrigger: {
+              trigger: counter,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            }
+          }
+        );
+      });
+
+      // 6. Respiración Profunda y Evidente de la Atmósfera (Hero)
+      if (document.getElementById('hero-ambient-glow')) {
+        gsap.fromTo("#hero-ambient-glow", 
+          { xPercent: -50, yPercent: -50, scale: 0.85, opacity: 0.45 },
+          {
+            xPercent: -50,
+            yPercent: -50,
+            scale: 1.45,
+            opacity: 1,
+            duration: 3.2,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+          }
+        );
+      }
+
+      if (document.getElementById('hero-ambient-pulse')) {
+        gsap.fromTo("#hero-ambient-pulse", 
+          { xPercent: -50, yPercent: -50, scale: 0.75, opacity: 0.2 },
+          {
+            xPercent: -50,
+            yPercent: -50,
+            scale: 1.4,
+            opacity: 0.85,
+            duration: 3.8,
+            delay: 0.3,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+          }
+        );
+      }
+
+      // 7. OLEAJE AZUL LÍQUIDO CON FÍSICA REACTIVA AL MOUSE (SECCIÓN 5)
+      const waveCard = document.querySelector('#cta-wave-chamber-card');
+      const wave1 = document.querySelector('#blue-wave-1');
+      const wave2 = document.querySelector('#blue-wave-2');
+      const wave3 = document.querySelector('#blue-wave-3');
+      const wave4 = document.querySelector('#blue-wave-4');
+      const spotlight = document.querySelector('#card-mouse-spotlight');
+
+      if (wave1) gsap.to(wave1, { rotation: 40, scale: 1.45, duration: 6.2, repeat: -1, yoyo: true, ease: "sine.inOut" });
+      if (wave2) gsap.to(wave2, { rotation: -45, scale: 1.5, duration: 7.1, repeat: -1, yoyo: true, ease: "sine.inOut" });
+      if (wave3) gsap.to(wave3, { xPercent: -50, yPercent: -50, scale: 1.35, opacity: 0.9, duration: 4.5, repeat: -1, yoyo: true, ease: "sine.inOut" });
+      if (wave4) gsap.to(wave4, { rotation: -30, scale: 1.35, duration: 5.5, repeat: -1, yoyo: true, ease: "sine.inOut" });
+
+      if (waveCard) {
+        let spotX, spotY;
+        if (spotlight) {
+          spotX = gsap.quickTo(spotlight, "x", { duration: 0.3, ease: "power2.out" });
+          spotY = gsap.quickTo(spotlight, "y", { duration: 0.3, ease: "power2.out" });
+        }
+
+        const w1X = wave1 ? gsap.quickTo(wave1, "x", { duration: 0.5, ease: "power2.out" }) : null;
+        const w1Y = wave1 ? gsap.quickTo(wave1, "y", { duration: 0.5, ease: "power2.out" }) : null;
+        const w2X = wave2 ? gsap.quickTo(wave2, "x", { duration: 0.65, ease: "power2.out" }) : null;
+        const w2Y = wave2 ? gsap.quickTo(wave2, "y", { duration: 0.65, ease: "power2.out" }) : null;
+        const w3X = wave3 ? gsap.quickTo(wave3, "x", { duration: 0.35, ease: "power2.out" }) : null;
+        const w3Y = wave3 ? gsap.quickTo(wave3, "y", { duration: 0.35, ease: "power2.out" }) : null;
+        const w4X = wave4 ? gsap.quickTo(wave4, "x", { duration: 0.45, ease: "power2.out" }) : null;
+        const w4Y = wave4 ? gsap.quickTo(wave4, "y", { duration: 0.45, ease: "power2.out" }) : null;
+
+        waveCard.addEventListener('mouseenter', () => {
+          if (spotlight) gsap.to(spotlight, { opacity: 1, duration: 0.4 });
+        });
+
+        waveCard.addEventListener('mouseleave', () => {
+          if (spotlight) gsap.to(spotlight, { opacity: 0, duration: 0.5 });
+          if (wave1 && wave2 && wave3 && wave4) {
+            gsap.to([wave1, wave2, wave3, wave4], { x: 0, y: 0, duration: 1.2, ease: "power2.out" });
+          }
+        });
+
+        waveCard.addEventListener('mousemove', (e) => {
+          const rect = waveCard.getBoundingClientRect();
+          const mouseX = e.clientX - rect.left;
+          const mouseY = e.clientY - rect.top;
+          const x = mouseX - rect.width / 2;
+          const y = mouseY - rect.height / 2;
+
+          if (spotX && spotY) { spotX(mouseX); spotY(mouseY); }
+          if (w1X && w1Y) { w1X(x * 0.5); w1Y(y * 0.5); }
+          if (w2X && w2Y) { w2X(-x * 0.45); w2Y(-y * 0.45); }
+          if (w3X && w3Y) { w3X(x * 0.85); w3Y(y * 0.85); }
+          if (w4X && w4Y) { w4X(-x * 0.3); w4Y(y * 0.6); }
+        });
+      }
+
+      // 8. Onda Radial Expansiva desde la posición del Cursor en Botón Final (#final-cta-btn)
+      const finalBtn = document.querySelector('#final-cta-btn');
+      const rippleWave = document.querySelector('#btn-ripple-wave');
+      const finalBtnText = document.querySelector('#final-cta-text');
+
+      if (finalBtn && rippleWave) {
+        let rippleTl;
+
+        finalBtn.addEventListener('mouseenter', (e) => {
+          const rect = finalBtn.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const maxDist = Math.hypot(
+            Math.max(x, rect.width - x),
+            Math.max(y, rect.height - y)
+          ) * 2.2;
+
+          if (rippleTl) rippleTl.kill();
+
+          gsap.set(rippleWave, {
+            left: x,
+            top: y,
+            width: 0,
+            height: 0,
+            opacity: 1
+          });
+
+          rippleTl = gsap.timeline();
+          rippleTl
+            .to(rippleWave, {
+              width: maxDist,
+              height: maxDist,
+              duration: 0.45,
+              ease: "power2.out"
+            }, 0)
+            .to(finalBtn, {
+              backgroundColor: "#000000",
+              scale: 1.035,
+              boxShadow: "0 20px 40px -8px rgba(0, 0, 0, 0.7)",
+              duration: 0.45,
+              ease: "power2.out"
+            }, 0)
+            .to(finalBtnText, {
+              color: "#FFFFFF",
+              duration: 0.25,
+              ease: "power2.out"
+            }, 0.05);
+        });
+
+        finalBtn.addEventListener('mouseleave', () => {
+          if (rippleTl) rippleTl.kill();
+
+          gsap.timeline()
+            .to(finalBtn, {
+              backgroundColor: "#FFFFFF",
+              scale: 1,
+              boxShadow: "0 10px 25px -3px rgba(0, 0, 0, 0.25)",
+              duration: 0.35,
+              ease: "power2.out"
+            }, 0)
+            .to(rippleWave, {
+              opacity: 0,
+              duration: 0.3,
+              ease: "power2.inOut",
+              onComplete: () => {
+                gsap.set(rippleWave, { width: 0, height: 0 });
+              }
+            }, 0)
+            .to(finalBtnText, {
+              color: "#0F172A",
+              duration: 0.25,
+              ease: "power2.out"
+            }, 0);
+        });
+      }
+
+      // 9. Navbar Adaptativa Inteligente (Cambia dinámicamente entre Blanco y Negro)
+      const navPill = document.querySelector('.navbar-container');
+      const themeSections = document.querySelectorAll('section[data-nav-theme], footer[data-nav-theme]');
+
+      function updateNavbarThemeOnScroll() {
+        if (!navPill) return;
+        const checkY = 48; // Puntos fijos de altura bajo la píldora fija de la navbar
+        let activeTheme = 'dark';
+
+        themeSections.forEach(section => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= checkY && rect.bottom >= checkY) {
+            activeTheme = section.getAttribute('data-nav-theme') || 'dark';
+          }
+        });
+
+        applyNavTheme(activeTheme);
+      }
+
+      function applyNavTheme(theme) {
+        if (!navPill) return;
+        if (theme === 'light') {
+          if (!navPill.classList.contains('nav-theme-light')) {
+            navPill.classList.add('nav-theme-light');
+            gsap.to(navPill, {
+              backgroundColor: "rgba(255, 255, 255, 0.94)",
+              borderColor: "rgba(0, 0, 0, 0.12)",
+              boxShadow: "0 12px 36px -4px rgba(0, 0, 0, 0.08)",
+              duration: 0.25,
+              ease: "power2.out"
+            });
+          }
+        } else {
+          if (navPill.classList.contains('nav-theme-light')) {
+            navPill.classList.remove('nav-theme-light');
+            gsap.to(navPill, {
+              backgroundColor: "rgba(0, 0, 0, 0.90)",
+              borderColor: "rgba(255, 255, 255, 0.14)",
+              boxShadow: "0 12px 36px -4px rgba(0, 0, 0, 0.6)",
+              duration: 0.25,
+              ease: "power2.out"
+            });
+          }
+        }
+      }
+
+      // Disparador de ScrollTrigger + Listener continuo de scroll
+      ScrollTrigger.create({
+        onUpdate: updateNavbarThemeOnScroll
+      });
+      window.addEventListener('scroll', updateNavbarThemeOnScroll);
+      if (lenis) lenis.on('scroll', updateNavbarThemeOnScroll);
+      updateNavbarThemeOnScroll();
+    }
+
+    // Navegación cinematográfica y continua al hacer clic en los enlaces de la navbar (sin pausas ni frenos intermedios)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#' || !targetId) return;
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+
+          // Cerrar menú móvil si está abierto
+          const mobileDrawer = document.getElementById('mobile-drawer');
+          const mobileOverlay = document.getElementById('mobile-drawer-overlay');
+          if (mobileDrawer && !mobileDrawer.classList.contains('translate-x-full')) {
+            mobileDrawer.classList.add('translate-x-full');
+            if (mobileOverlay) {
+              mobileOverlay.classList.add('opacity-0', 'pointer-events-none');
+              mobileOverlay.classList.remove('opacity-100', 'pointer-events-auto');
+            }
+          }
+
+          if (targetId === '#protocolo' || targetId === '#protocolo-section') {
+            // Destino: Protocolo -> Aterrizar suavemente en el inicio exacto del pin
+            if (window.protoST) {
+              window.protoST.enable();
+            }
+            const targetY = window.protoST ? window.protoST.start : (target.getBoundingClientRect().top + window.pageYOffset - 70);
+            if (lenis) {
+              lenis.scrollTo(targetY, { 
+                duration: 1.8,
+                easing: (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+              });
+            } else {
+              window.scrollTo({ top: targetY, behavior: 'smooth' });
+            }
+            return;
+          }
+
+          // Para cualquier otra sección (Contacto, Catálogo, Hero), desactivamos temporalmente el pin
+          // para que no se quede pausada/frenada en la pantalla durante el viaje
+          if (window.protoST) {
+            window.protoST.disable(false);
+          }
+
+          // Calculamos la posición natural de destino sin el bloqueo de pantalla
+          const targetY = (targetId === '#hero') ? 0 : (target.getBoundingClientRect().top + window.pageYOffset - 70);
+
+          if (lenis) {
+            // Desplazamiento continuo, fluido y sin interrupciones
+            lenis.scrollTo(targetY, { 
+              duration: 1.8,
+              easing: (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2,
+              onComplete: () => {
+                // Al llegar a destino, reactivamos ScrollTrigger para que el scroll manual funcione 100%
+                if (window.protoST) {
+                  window.protoST.enable();
+                  if (typeof ScrollTrigger !== 'undefined') {
+                    ScrollTrigger.refresh();
+                  }
+                }
+              }
+            });
+          } else {
+            window.scrollTo({ top: targetY, behavior: 'smooth' });
+            setTimeout(() => {
+              if (window.protoST) {
+                window.protoST.enable();
+                if (typeof ScrollTrigger !== 'undefined') {
+                  ScrollTrigger.refresh();
+                }
+              }
+            }, 600);
+          }
+        }
+      });
+    });
+
+    // Initialize with stored or default language
+    if (currentLang !== 'es') {
+      changeLang(currentLang);
+    } else {
+      changeLang('es');
+    }
+  </script>
+</body>
+</html>

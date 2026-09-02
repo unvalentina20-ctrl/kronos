@@ -1,0 +1,21 @@
+{
+  "name": "kronos-b2b",
+  "version": "1.0.0",
+  "description": "KRONOS — Distribución Mayorista de iPhones & B2B Tech Landing Page",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y serve . -p 3000",
+    "start": "npx -y serve . -p 3000"
+  },
+  "keywords": [
+    "landing-page",
+    "b2b",
+    "gsap",
+    "tailwind",
+    "lenis",
+    "iphone",
+    "wholesale"
+  ],
+  "author": "Valentina Binasco",
+  "license": "MIT"
+}
